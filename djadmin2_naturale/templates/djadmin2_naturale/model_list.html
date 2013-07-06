@@ -1,4 +1,4 @@
-{% extends "djadmin2_1995/base.html" %}
+{% extends "djadmin2_naturale/base.html" %}
 {% load admin2_tags i18n %}
 
 {% block title %}{% blocktrans with model_name=model_name %}Select {{ model_name }} to change{% endblocktrans %}{% endblock title %}
@@ -25,7 +25,7 @@
                 </form>
             {% endif %}
     </table>
-    
+
 {% endblock breadcrumbs %}
 
 {% block content %}
@@ -55,7 +55,7 @@
         </tr>
     </table>
 
-		
+
     <table border="1" cellpadding="3" cellspacing="3">
         <thead>
             <th class="checkbox-column"><input type="checkbox" class="model-select-all"></th>

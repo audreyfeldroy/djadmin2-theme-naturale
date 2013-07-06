@@ -1,4 +1,4 @@
-{% extends "djadmin2_1995/base.html" %}
+{% extends "djadmin2_naturale/base.html" %}
 {% load admin2_tags i18n %}
 
 {% block title %}{% trans "Are you sure?" %}{% endblock title %}
@@ -8,7 +8,7 @@
 {% block breadcrumbs %}
     <a href="{% url "admin2:dashboard" %}">Home</a> |
     <a href="{% url "admin2:app_index" app_label=app_label %}">{{ app_label|title }}</a> |
-    <a href="{% url view|admin2_urlname:"index" %}">{{ model_name_pluralized|title }}</a> | 
+    <a href="{% url view|admin2_urlname:"index" %}">{{ model_name_pluralized|title }}</a> |
     <a href="{% url view|admin2_urlname:"detail" pk=object.pk %}">{{ object }}</a> |
     {% trans "Delete" %}
 {% endblock breadcrumbs %}
