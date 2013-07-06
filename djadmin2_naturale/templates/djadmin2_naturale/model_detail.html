@@ -1,0 +1,20 @@
+{% extends "djadmin2_1995/base.html" %}
+
+{% load admin2_tags %}
+
+{% block title %}{{ object }}{% endblock title %}
+
+{% block page_title %}{{ object }}{% endblock page_title%}
+
+{% block breadcrumbs %}
+    <a href="{% url "admin2:dashboard" %}">Home</a> |
+    <a href="{% url "admin2:app_index" app_label=app_label %}">{{ app_label|title }}</a> |
+    <a href="{% url view|admin2_urlname:"index" %}">{{ model_name_pluralized|title }}</a> |
+    {{ object }}
+{% endblock breadcrumbs %}
+
+{% block content %}
+
+{{ object }}
+
+{% endblock content %}

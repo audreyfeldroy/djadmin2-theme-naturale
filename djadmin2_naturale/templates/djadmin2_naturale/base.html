@@ -1,0 +1,79 @@
+{% load i18n %}<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+
+        <title>{% block title %}Site administration{% endblock title %} | django-admin2</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>django-admin2</h1>
+        
+        <!-- NavBar -->
+        <!-- NavBar -->
+        <!-- NavBar -->
+        {% block navbar %}
+        <p>
+            <a tabindex="2" href="{% url 'admin2:api_index' %}">{% trans "API" %}</a>
+
+        {% if docsroot %}
+            | <!-- spacing stuff -->
+            <a tabindex="3" href="{{ docsroot }}">{% trans 'Documentation' %}</a>
+        {% endif %}
+
+        {% if user.is_authenticated %}
+            | <!-- spacing stuff -->
+            <a tabindex="4" href="#">
+                {% if user.get_full_name %}
+                    {{ user.get_full_name }}
+                {% else %}
+                    {% blocktrans with user=user.username %}
+                        Logged in as {{ user }}
+                    {% endblocktrans %}
+                {% endif %}
+            </a>
+            {% if user.has_usable_password %}
+                <a href="{% url 'admin2:password_change' user.id %}">{% trans "Change password" %}</a> |
+            {% endif %}
+            <a href="{% url 'admin2:logout' %}">{% trans "Log out" %}</a>
+        {% endif %}
+        </p>
+        {% endblock navbar %}
+        
+
+        <!-- NavBar -->
+        <!-- NavBar -->
+        <!-- NavBar -->
+        {% block breadcrumbs %}
+        <p>
+           Home
+        </p>
+        {% endblock breadcrumbs %}
+
+
+        <!-- Messages -->
+        <!-- Messages -->
+        <!-- Messages -->
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <!-- TODO replace the class with WARNING!, INFO!, etc prefixes -->
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <!-- PageTitle -->
+        <!-- PageTitle -->
+        <!-- PageTitle -->
+        <h2>{% block page_title %}{% trans "Site administration" %}{% endblock page_title %}</h2>
+        
+        
+        {% block content %}{% endblock content %}
+
+
+        {% block javascript %}
+        <script src="{{ STATIC_URL }}js/djadmin2_1995.js"></script>
+        {% endblock javascript %}
+    </body>
+</html>

@@ -1,0 +1,19 @@
+{% extends "djadmin2_1995/base.html" %}
+{% load admin2_tags i18n %}
+
+{% block content %}
+
+<table width="100%">
+    <tr>
+        <td width="58%">
+        {% for app_label, registry in apps.items %}
+            {% include 'admin2/bootstrap/includes/app_model_list.html' %}
+        {% endfor %}
+        </td>
+        <td width="42%">
+            <h4>{% trans "Recent Actions" %}</h4>
+            <h5>{% trans "My Actions" %}</h5>
+            TODO
+        </td>
+</table>
+{% endblock content %}

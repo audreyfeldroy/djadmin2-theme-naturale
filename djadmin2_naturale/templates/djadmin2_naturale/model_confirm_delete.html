@@ -1,0 +1,32 @@
+{% extends "djadmin2_1995/base.html" %}
+{% load admin2_tags i18n %}
+
+{% block title %}{% trans "Are you sure?" %}{% endblock title %}
+
+{% block page_title %}{% trans "Are you sure?" %}{% endblock page_title %}
+
+{% block breadcrumbs %}
+    <a href="{% url "admin2:dashboard" %}">Home</a> |
+    <a href="{% url "admin2:app_index" app_label=app_label %}">{{ app_label|title }}</a> |
+    <a href="{% url view|admin2_urlname:"index" %}">{{ model_name_pluralized|title }}</a> | 
+    <a href="{% url view|admin2_urlname:"detail" pk=object.pk %}">{{ object }}</a> |
+    {% trans "Delete" %}
+{% endblock breadcrumbs %}
+
+{% block content %}
+
+<p>{% blocktrans with model_name=model_name object=object %}Are you sure you want to delete the {{ model_name }} "{{ object }}"? All of the following items will be deleted:{% endblocktrans %}</p>
+
+<ul>
+	{{ deletable_objects|unordered_list }}
+</ul>
+
+<form method="post">
+    {% csrf_token %}
+    <table>
+    {{ form }}
+    </table>
+    <button class="btn btn-small btn-danger" type="submit">{% trans "Yes, I'm sure" %}</button>
+</form>
+
+{% endblock content %}
