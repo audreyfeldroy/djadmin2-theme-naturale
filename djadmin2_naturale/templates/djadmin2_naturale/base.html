@@ -20,15 +20,9 @@
 
           <ul class="nav pull-right">
 
-            <li><a tabindex="2" href="{% url 'admin2:api_index' %}">{% trans "API" %}</a></li>
-
-            {% if docsroot %}
-            <li><a tabindex="3" href="{{ docsroot }}">{% trans 'Documentation' %}</a></li>
-            {% endif %}
-
             {% if user.is_authenticated %}
             <li class="dropdown">
-              <a tabindex="4" href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 {% if user.get_full_name %}
                   {{ user.get_full_name }}
                 {% else %}
@@ -69,10 +63,18 @@
     {% endif %}
 
     <div class="container-fluid">
-      <div class="row-fluid">
-
-      </div>
       {% block content %}{% endblock content %}
+    </div>
+
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <hr />
+        <a href="{% url 'admin2:api_index' %}">{% trans "API" %}</a> |
+
+        {% if docsroot %}
+        <a href="{{ docsroot }}">{% trans 'Documentation' %}</a> |
+        {% endif %}
+      </div>
     </div>
 
     {% block javascript %}

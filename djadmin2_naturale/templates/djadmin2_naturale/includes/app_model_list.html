@@ -1,5 +1,7 @@
 {% load i18n admin2_tags %}
-    <h3><a href="{% url 'admin2:app_index' app_label=app_label %}">{{ app_label|title }}</a></h3>
+
+<hr />
+<h3><a href="{% url 'admin2:app_index' app_label=app_label %}">{{ app_label|title }}</a></h3>
 {% for model_class, model_admin in registry.items %}
 {% with permissions|for_admin:model_admin as permissions %}
 {% if permissions.has_view_permission or permissions.has_add_permission or permissions.has_change_permission %}
