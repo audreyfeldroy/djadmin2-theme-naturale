@@ -1,79 +1,84 @@
 {% load i18n %}<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8">
 
-        <title>{% block title %}Site administration{% endblock title %} | django-admin2</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <h1>django-admin2</h1>
-        
-        <!-- NavBar -->
-        <!-- NavBar -->
-        <!-- NavBar -->
-        {% block navbar %}
-        <p>
-            <a tabindex="2" href="{% url 'admin2:api_index' %}">{% trans "API" %}</a>
+    <title>{% block title %}{% trans "Site administration" %}{% endblock title %} | django-admin2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    {% block css %}
+        <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="{{ STATIC_URL }}css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+        <link href="{{ STATIC_URL }}css/naturale.css" rel="stylesheet" media="screen">
+    {% endblock css %}
+  </head>
+  <body>
+    {% block navbar %}
+    <div class="navbar navbar-static-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a tabindex="1" class="brand" href="{% url 'admin2:dashboard' %}">Django-Admin2</a>
 
-        {% if docsroot %}
-            | <!-- spacing stuff -->
-            <a tabindex="3" href="{{ docsroot }}">{% trans 'Documentation' %}</a>
-        {% endif %}
+          <ul class="nav pull-right">
+            <li><a tabindex="2" href="{% url 'admin2:api_index' %}">{% trans "API" %}</a></li>
 
-        {% if user.is_authenticated %}
-            | <!-- spacing stuff -->
-            <a tabindex="4" href="#">
-                {% if user.get_full_name %}
-                    {{ user.get_full_name }}
-                {% else %}
-                    {% blocktrans with user=user.username %}
-                        Logged in as {{ user }}
-                    {% endblocktrans %}
-                {% endif %}
-            </a>
-            {% if user.has_usable_password %}
-                <a href="{% url 'admin2:password_change' user.id %}">{% trans "Change password" %}</a> |
+            {% if docsroot %}
+            <li><a tabindex="3" href="{{ docsroot }}">{% trans 'Documentation' %}</a></li>
             {% endif %}
-            <a href="{% url 'admin2:logout' %}">{% trans "Log out" %}</a>
-        {% endif %}
-        </p>
-        {% endblock navbar %}
-        
 
-        <!-- NavBar -->
-        <!-- NavBar -->
-        <!-- NavBar -->
-        {% block breadcrumbs %}
-        <p>
-           Home
-        </p>
-        {% endblock breadcrumbs %}
+            {% if user.is_authenticated %}
+            <li class="dropdown">
+              <a tabindex="4" href="#" class="dropdown-toggle" data-toggle="dropdown">
+                {% if user.get_full_name %}
+                  {{ user.get_full_name }}
+                {% else %}
+                  {% blocktrans with user=user.username %}Logged in as {{ user }}{% endblocktrans %}
+                {% endif %}
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                {% if user.has_usable_password %}
+                <li><a href="{% url 'admin2:password_change' user.id %}">{% trans "Change password" %}</a></li>
+                {% endif %}
+                <li><a href="{% url 'admin2:logout' %}">{% trans "Log out" %}</a></li>
+              </ul>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </div>
+    {% endblock navbar %}
 
+    {% block breacrumbs %}
+    <ul class="breadcrumb">
+      {% block breadcrumbs %}
+      <li class="active">{% trans "Home" %}</li>
+      {% endblock breadcrumbs %}
+    </ul>
+    {% endblock breacrumbs %}
 
-        <!-- Messages -->
-        <!-- Messages -->
-        <!-- Messages -->
-        {% if messages %}
-        <ul>
-            {% for message in messages %}
-            <!-- TODO replace the class with WARNING!, INFO!, etc prefixes -->
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
+    {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
 
-        <!-- PageTitle -->
-        <!-- PageTitle -->
-        <!-- PageTitle -->
-        <h2>{% block page_title %}{% trans "Site administration" %}{% endblock page_title %}</h2>
-        
-        
-        {% block content %}{% endblock content %}
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="{% block class_page_title %}span10{% endblock class_page_title %}">
+          <h3>{% block page_title %}{% trans "Site administration" %}{% endblock page_title %}</h3>
+        </div>
+      </div>
+      {% block content %}{% endblock content %}
+    </div>
 
-
-        {% block javascript %}
-        <script src="{{ STATIC_URL }}js/djadmin2_1995.js"></script>
-        {% endblock javascript %}
-    </body>
+    {% block javascript %}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="{{ STATIC_URL }}themes/bootstrap/js/jquery.min.js">\x3C/script>')</script>
+    <script src="{{ STATIC_URL }}themes/bootstrap/js/bootstrap.min.js"></script>
+    {% endblock javascript %}
+  </body>
 </html>

@@ -1,0 +1,56 @@
+/* Fixes a Bootstrap 2.3 bug. This can be removed when upgrading to Bootstrap v3. */
+
+.text-right
+{
+    text-align: right !important;
+}
+
+.text-center
+{
+    text-align: center !important;
+}
+
+.text-left
+{
+    text-align: left !important;
+}
+
+/* Custom CSS classes go below this point */
+
+/* Borrowed from Bootstrap theme */
+
+.checkbox-column {
+    width: 16px;
+}
+
+.space-below {
+    margin-bottom: 10px;
+}
+
+/* Styles for Naturale */
+.breadcrumb {
+  padding: 5px 15px;
+  border-bottom: 1px #999999;
+  margin: 0 0 20px;
+  list-style: none;
+  background-color: #ffffff;
+  -webkit-border-radius: 0;
+     -moz-border-radius: 0;
+          border-radius: 0;
+}
+
+.breadcrumb > li {
+  display: inline-block;
+  *display: inline;
+  text-shadow: 0 1px 0 #ffffff;
+  *zoom: 1;
+}
+
+.breadcrumb > li > .divider {
+  padding: 0 5px;
+  color: #ccc;
+}
+
+.breadcrumb > .active {
+  color: #999999;
+}
