@@ -45,7 +45,7 @@
     <div class="container-fluid">
       <div class="row-fluid">
           {% block breadcrumbs %}
-            <a href="{% url 'admin2:dashboard' %}">{% trans "Home" %}</a> |
+            <a href="{% url 'admin2:dashboard' %}">{% trans "Home" %}</a>
           {% endblock breadcrumbs %}
       </div>
     </div>
@@ -65,10 +65,10 @@
     <div class="container-fluid">
       <div class="row-fluid">
         <hr />
-        <a href="{% url 'admin2:api_index' %}">{% trans "API" %}</a> |
+        <a href="{% url 'admin2:api_index' %}">{% trans "API" %}</a>
 
         {% if docsroot %}
-        <a href="{{ docsroot }}">{% trans 'Documentation' %}</a> |
+        | <a href="{{ docsroot }}">{% trans 'Documentation' %}</a>
         {% endif %}
       </div>
     </div>
