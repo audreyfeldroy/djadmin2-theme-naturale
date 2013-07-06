@@ -23,59 +23,55 @@
 {% block content %}
 <form id="model-list-form" class="form-inline" method="post">
 	{% csrf_token %}
-    <table>
-        <tr>
-            <td>
-                <select name="action">
-                    {% for action in actions %}
-                        <option value="{{ action.name }}">{{ action.description }}</option>
-                    {% endfor %}
-                </select>
-                <button>
-                    Go
-                </button>
-            </td><td>
-                <small class="muted"><span id="selected-count">0</span> of {{ object_list|length }} selected</small>
-                {% if permissions.has_add_permission %}
-                            <a href="{% url view|admin2_urlname:'create' %}" class="btn"><i class="icon-plus"></i> {% blocktrans with model_verbose_name=model|model_verbose_name %}Add {{ model_verbose_name }}{% endblocktrans %}</a>
-                {% endif %}
-            </td>
-        </tr>
-    </table>
+    <select name="action">
+        {% for action in actions %}
+            <option value="{{ action.name }}">{{ action.description }}</option>
+        {% endfor %}
+    </select>
+    <button>
+        Go
+    </button>
 
+    <small class="muted"><span id="selected-count">0</span> of {{ object_list|length }} selected</small>
+    {% if permissions.has_add_permission %}
+                <a href="{% url view|admin2_urlname:'create' %}" class="btn"><i class="icon-plus"></i> {% blocktrans with model_verbose_name=model|model_verbose_name %}Add {{ model_verbose_name }}{% endblocktrans %}</a>
+    {% endif %}
 
-    <table border="1" cellpadding="3" cellspacing="3">
-        <thead>
-            <th class="checkbox-column"><input type="checkbox" class="model-select-all"></th>
+    <div class="row-fluid">
+        <div class="span1">
+            <input type="checkbox" class="model-select-all">
+        </div>
+        <div class="span8">
             {% for attr in view.model_admin.list_display %}
                 {% if forloop.first and attr == "__str__" %}
-                    <th>{{ model_name|capfirst }}</th>
+                    <h4>{{ model_name|capfirst }}</h4>
                 {% else %}
-                    <th>{{ attr }}</th>
+                    {{ attr }}
                 {% endif%}
             {% endfor %}
-        </thead>
-        <tbody>
-            {% for obj in object_list %}
-            <tr>
-                <td><input type="checkbox" class="model-select" name="selected_model_pk" value="{{ obj.pk }}"></td>
-                {% for attr in view.model_admin.list_display %}
-                    <td>
-                        {% if permissions.has_change_permission %}
-    						<a href="{% url view|admin2_urlname:'update' pk=obj.pk %}">{% get_attr obj attr %}</a>
-    					{% else %}
-                        	{% if permissions.has_view_permission %}
-                        		<a href="{% url view|admin2_urlname:'detail' pk=obj.pk %}">{% get_attr obj attr %}</a>
-    						{% else %}
-    							{% get_attr obj attr %}
-                        	{% endif %}
-                        {% endif %}
-                    </td>
-                {% endfor %}
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+        </div>
+    </div>
+
+    {% for obj in object_list %}
+    <div class="row-fluid">
+        <div class="span1">
+            <input type="checkbox" class="model-select" name="selected_model_pk" value="{{ obj.pk }}">
+        </div>
+        {% for attr in view.model_admin.list_display %}
+        <div class="span8">
+            {% if permissions.has_change_permission %}
+				<a href="{% url view|admin2_urlname:'update' pk=obj.pk %}">{% get_attr obj attr %}</a>
+			{% else %}
+            	{% if permissions.has_view_permission %}
+            		<a href="{% url view|admin2_urlname:'detail' pk=obj.pk %}">{% get_attr obj attr %}</a>
+				{% else %}
+					{% get_attr obj attr %}
+            	{% endif %}
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
 
         {{ object_list|length }} {{ model_name_pluralized }}
 </form>
