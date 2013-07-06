@@ -3,12 +3,12 @@
 
 {% block content %}
 <div class="row-fluid">
-  <div class="span6">
+  <div class="span5">
     {% for app_label, registry in apps.items %}
       {% include 'djadmin2_naturale/includes/app_model_list.html' %}
     {% endfor %}
   </div>
-  <div class="offset1 span5">
+  <div class="offset2 span5">
     <h4>{% trans "Recent Actions" %}</h4>
     <h5>{% trans "My Actions" %}</h5>
     TODO

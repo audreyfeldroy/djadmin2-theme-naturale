@@ -8,3 +8,9 @@ Why?
 ----
 
 We need an alternate django-admin2 theme with HTML/CSS/JS in order to test the theming system.
+
+Features
+--------
+
+* Minimal styling.
+* Completely table-free layout.
