@@ -128,7 +128,7 @@ INSTALLED_APPS = (
     'floppyforms',
     'rest_framework',
     'djadmin2',
-    'djadmin2_1995',
+    'djadmin2_naturale',
     'blog',
 )
 
@@ -162,7 +162,7 @@ LOGGING = {
 }
 
 ########## ADMIN2 CONFIGURATION
-ADMIN2_THEME_DIRECTORY = 'djadmin2_1995'
+ADMIN2_THEME_DIRECTORY = 'djadmin2_naturale'
 ########## END ADMIN2 CONFIGURATION
 
 

@@ -48,8 +48,8 @@ def get_package_data(package):
     return {package: filepaths}
 
 
-author = get_author('djadmin2_1995')
-version = get_version('djadmin2_1995')
+author = get_author('djadmin2_naturale')
+version = get_version('djadmin2_naturale')
 
 
 if sys.argv[-1] == 'publish':
@@ -62,9 +62,9 @@ if sys.argv[-1] == 'publish':
 LONG_DESCRIPTION = open('README.rst').read()
 
 setup(
-    name='djadmin2-theme-1995',
+    name='djadmin2-theme-naturale',
     version=version,
-    description="A 1995-era theme for django-admin2.",
+    description="A django-admin2 theme, named after the still bottled water on our table during the EuroPython sprints..",
     long_description=LONG_DESCRIPTION,
     classifiers=[
         "Development Status :: 3 - Alpha",
@@ -80,10 +80,10 @@ setup(
     ],
     keywords='django,admin',
     author=author,
-    author_email='pydanny@gmail.com',
-    url='http://github.com/twoscoops/djadmin2-theme-1995',
+    author_email='audreyr@gmail.com',
+    url='http://github.com/twoscoops/djadmin2-theme-naturale',
     license='MIT',
-    packages=get_packages('djadmin2_1995'),
+    packages=get_packages('djadmin2_naturale'),
     include_package_data=True,
     install_requires=[
         'django-admin2>=0.4.0',
