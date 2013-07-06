@@ -28,6 +28,19 @@
 }
 
 /* Styles for Naturale */
+body {
+  font-family: Georgia,Helvetica,Arial,sans-serif;
+}
+
+.container-fluid {
+    max-width: 880px;
+    margin: 0 auto;
+}
+
+h1 a {
+  color: #000000;
+}
+
 .breadcrumb {
   padding: 5px 15px;
   border-bottom: 1px #999999;

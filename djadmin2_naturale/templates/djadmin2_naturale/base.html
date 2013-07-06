@@ -14,12 +14,11 @@
   </head>
   <body>
     {% block navbar %}
-    <div class="navbar navbar-static-top">
-      <div class="navbar-inner">
         <div class="container-fluid">
-          <a tabindex="1" class="brand" href="{% url 'admin2:dashboard' %}">Django-Admin2</a>
+          <h1><a tabindex="1" class="brand" href="{% url 'admin2:dashboard' %}">Django-Admin2</a></h1>
 
           <ul class="nav pull-right">
+
             <li><a tabindex="2" href="{% url 'admin2:api_index' %}">{% trans "API" %}</a></li>
 
             {% if docsroot %}
@@ -46,17 +45,19 @@
             {% endif %}
           </ul>
         </div>
-      </div>
-    </div>
     {% endblock navbar %}
 
-    {% block breacrumbs %}
-    <ul class="breadcrumb">
-      {% block breadcrumbs %}
-      <li class="active">{% trans "Home" %}</li>
-      {% endblock breadcrumbs %}
-    </ul>
-    {% endblock breacrumbs %}
+    <div class="container-fluid">
+      <div class="row-fluid">
+        {% block breacrumbs %}
+        <ul class="breadcrumb">
+          {% block breadcrumbs %}
+          <li class="active">{% trans "Home" %}</li>
+          {% endblock breadcrumbs %}
+        </ul>
+        {% endblock breacrumbs %}
+      </div>
+    </div>
 
     {% if messages %}
     <ul class="messages">
