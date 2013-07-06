@@ -16,6 +16,7 @@
     {% block navbar %}
         <div class="container-fluid">
           <h1><a tabindex="1" class="brand" href="{% url 'admin2:dashboard' %}">Django-Admin2</a></h1>
+          <p class="lead">{% block page_title %}{% trans "Site administration" %}{% endblock page_title %}</p>
 
           <ul class="nav pull-right">
 
@@ -69,9 +70,7 @@
 
     <div class="container-fluid">
       <div class="row-fluid">
-        <div class="{% block class_page_title %}span10{% endblock class_page_title %}">
-          <h3>{% block page_title %}{% trans "Site administration" %}{% endblock page_title %}</h3>
-        </div>
+
       </div>
       {% block content %}{% endblock content %}
     </div>
