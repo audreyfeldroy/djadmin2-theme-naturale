@@ -39,6 +39,8 @@ body {
 
 h1 a {
   color: #000000;
+  font-family: "Lily Script One",Georgia,Helvetica,serif;
+  font-weight: 600;
 }
 
 .breadcrumb {
