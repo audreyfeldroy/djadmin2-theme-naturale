@@ -7,32 +7,20 @@
 
 
 {% block breadcrumbs %}
-    <table>
-        <tr>
-            <td>
-                <a href="{% url "admin2:dashboard" %}">Home</a> |
-                <a href="{% url "admin2:app_index" app_label=app_label %}">{{ app_label|title }}</a> |
-                {{ model_name_pluralized|title }}
-            </td>
-            {% if search_fields %}
-                <form method="get" class="form-search">
-                    <td>
-                        <input type="text" placeholder="Search Term" name="q" value="{{search_term}}"/>
-                    </td>
-                    <td>
-                        <button type="button"> Search</button>
-                    </td>
-                </form>
-            {% endif %}
-    </table>
+<a href="{% url "admin2:dashboard" %}">Home</a> |
+<a href="{% url "admin2:app_index" app_label=app_label %}">{{ app_label|title }}</a> |
+{{ model_name_pluralized|title }}
+
+{% if search_fields %}
+    <form method="get" class="form-search">
+        <input type="text" placeholder="Search Term" name="q" value="{{search_term}}"/>
+        <button type="button"> Search</button>
+    </form>
+{% endif %}
 
 {% endblock breadcrumbs %}
 
 {% block content %}
-
-
-
-
 <form id="model-list-form" class="form-inline" method="post">
 	{% csrf_token %}
     <table>

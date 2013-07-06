@@ -44,13 +44,9 @@
 
     <div class="container-fluid">
       <div class="row-fluid">
-        {% block breacrumbs %}
-        <ul class="breadcrumb">
           {% block breadcrumbs %}
-          <li class="active">{% trans "Home" %}</li>
+            <a href="{% url 'admin2:dashboard' %}">{% trans "Home" %}</a> |
           {% endblock breadcrumbs %}
-        </ul>
-        {% endblock breacrumbs %}
       </div>
     </div>
 
