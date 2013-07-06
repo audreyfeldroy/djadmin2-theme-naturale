@@ -2,7 +2,7 @@
 {% load admin2_tags i18n %}
 
 {% block content %}
-<div class="row">
+<div class="row-fluid">
   <div class="span7">
     {% for app_label, registry in apps.items %}
       {% include 'djadmin2_naturale/includes/app_model_list.html' %}
