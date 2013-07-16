@@ -38,10 +38,11 @@
     {% endif %}
 
     <div class="row-fluid">
+        <hr />
         <div class="span1">
             <input type="checkbox" class="model-select-all">
         </div>
-        <div class="span8">
+        <div class="span10">
             {% for attr in view.model_admin.list_display %}
                 {% if forloop.first and attr == "__str__" %}
                     <h4>{{ model_name|capfirst }}</h4>
@@ -58,7 +59,7 @@
             <input type="checkbox" class="model-select" name="selected_model_pk" value="{{ obj.pk }}">
         </div>
         {% for attr in view.model_admin.list_display %}
-        <div class="span8">
+        <div class="span10">
             {% if permissions.has_change_permission %}
 				<a href="{% url view|admin2_urlname:'update' pk=obj.pk %}">{% get_attr obj attr %}</a>
 			{% else %}
