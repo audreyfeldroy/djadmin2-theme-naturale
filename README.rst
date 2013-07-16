@@ -2,6 +2,14 @@
 djadmin2-theme-naturale
 =======================
 
+Warning: still a work in progress. Not fully functional yet.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Don't use this yet (although help getting this working is welcome).
+
+What is this?
+-------------
+
 A django-admin2 theme, named after the still bottled water on our table during the EuroPython sprints.
 
 Why?
