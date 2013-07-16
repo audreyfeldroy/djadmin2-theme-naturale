@@ -5,16 +5,19 @@ Installation
 For Contributors
 ----------------
 
-These instructions assume that you want to do active development on django-admin2 and djadmin2-theme-naturale.
+These instructions assume that you want to do active development on both
+django-admin2 and djadmin2-theme-naturale.
 
-Create a virtualenv and install the requirements::
+Create a virtualenv::
 
-    pip install -r requirements-example.txt
+    virtualenv djadmin2-env
 
-Install your fork of django-admin2 for local development::
+Install your fork of django-admin2 for local development, using the 
+djadmin2-theme-naturale branch::
 
     git clone git@github.com:your-name-here/django-admin2.git
     cd django-admin2
+    git checkout -b djadmin2-theme-naturale
     python setup.py develop
 
 Install your fork of djadmin2-theme-naturale for local development::
@@ -23,7 +26,7 @@ Install your fork of djadmin2-theme-naturale for local development::
     cd djadmin2-theme-naturale
     python setup.py develop
 
-Add this your settings.py::
+Add this to the settings.py of the django-admin2 example project::
 
     INSTALLED_APPS = (
         # ... snip the rest
